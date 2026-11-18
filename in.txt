@@ -1,0 +1,10 @@
+Documentos/
+Documentos/TrabalhoAED3.pdf
+Documentos/Relatorio.txt
+Imagens/
+Imagens/foto1.png
+Imagens/foto2.jpg
+Downloads/
+Downloads/programa.exe
+Musicas/
+Musicas/favorita.mp3
