@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "arvore.h"
+#include <ctype.h>
 
 No *criarNo(const char *nome, int ehArquivo) {
     if (nome == NULL) return NULL;
@@ -30,9 +31,18 @@ void inserirFilho(No *pai, No *filho) {
 }
 
 No *buscarFilho(No *pai, const char *nome) {
-    if (!pai || !nome || pai->ehArquivo) return NULL;
-    for (No *atual = pai->primeiroFilho; atual; atual = atual->proximoIrmao)
-        if (strcmp(atual->nome, nome) == 0) return atual;
+    if (!pai || !nome || pai->ehArquivo)
+        return NULL;
+
+    for (No *atual = pai->primeiroFilho;
+         atual;
+         atual = atual->proximoIrmao) {
+
+        if (compararNomes(atual->nome, nome) == 0) {
+            return atual;
+        }
+    }
+
     return NULL;
 }
 
@@ -62,4 +72,18 @@ void removerFilho(No *pai, No *filho) {
     atual->pai = NULL;
     atual->proximoIrmao = NULL;
     liberarArvore(atual);
+}
+
+int compararNomes(const char *a, const char *b) {
+    while (*a && *b) {
+        if (tolower((unsigned char)*a) !=
+            tolower((unsigned char)*b)) {
+            return 1;
+        }
+
+        a++;
+        b++;
+    }
+
+    return *a != *b;
 }

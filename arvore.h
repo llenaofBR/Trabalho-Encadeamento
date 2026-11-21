@@ -16,5 +16,6 @@ void inserirFilho(No *pai, No *filho);
 No *buscarFilho(No *pai, const char *nome);
 void removerFilho(No *pai, No *filho);
 void liberarArvore(No *raiz);
+int compararNomes(const char *a, const char *b);
 
 #endif

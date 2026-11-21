@@ -107,7 +107,7 @@ static void montarCaminho(No *no, char *destino, size_t capacidade) {
 static void buscarRecursivoComCaminho(No *atual, const char *nome, int *encontrou) {
     if (!atual || !nome || !encontrou) return;
 
-    if (atual->pai && strcmp(atual->nome, nome) == 0) {
+    if (atual->pai && compararNomes(atual->nome, nome) == 0) {
         char caminho[2048];
         montarCaminho(atual, caminho, sizeof(caminho));
         printf("%s %s\n", atual->ehArquivo ? "[ARQUIVO]" : "[PASTA]", caminho);
